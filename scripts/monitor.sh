@@ -1,6 +1,6 @@
 #!/bin/bash
 output_file=logs/Server_monitoring_tool.log
-echo "                     " >> $output_file
+echo "                    " >> $output_file
 echo "------ NEW MONITORING REPORT -------" >> $output_file
 today=$(date)
 host=$(hostname)
