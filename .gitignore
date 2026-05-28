@@ -1,0 +1,19 @@
+# Log files
+logs/*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+
+# Vim swap files
+*.swp
+
+# VS Code settings
+.vscode/
+
+# Linux cache files
+.cache/
+
