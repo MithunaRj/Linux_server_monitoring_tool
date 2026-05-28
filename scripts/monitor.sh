@@ -13,14 +13,13 @@ memory_usage=$(( ${memory_info[1]} *100/ ${memory_info[0]} ))
 disk_usage=$( df -h | awk '{ if ( $6 == "/") print $5}' | tr -d "%")
 Usage_Monitoring() {
 		echo "$1 Usage is $2%" >> $output_file
+		if [ $2 -gt 80 ]; then
+		    echo "Alert: immediate action required , $1 usage is high" >> $output_file
+		fi
 }
 Usage_Monitoring "CPU" "$cpu_usage"
 Usage_Monitoring "Memory" "$memory_usage"
 Usage_Monitoring "disk" "$disk_usage"
-if [ $disk_usage -gt 80 ]; then
-	        echo "Alert: immediate action required , Disk usage is high" >> $output_file
-fi
-
 High_cpu_consumption=($( ps aux --sort=-%cpu | awk 'NR==2 {print $1 " "  $3}'))
 High_memory_consumption=($(  ps aux --sort=-%mem | awk 'NR==2 {print $1 " "  $3}'))
 Consumption_Monitoring() {
